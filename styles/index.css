@@ -1,25 +1,27 @@
-@import './button.css';
-
 /* purgecss start ignore */
+@import url("https://use.typekit.net/xzu2rwz.css");
+
 @tailwind base;
 @tailwind components;
+
+html { font-size: 12px; }
+
 /* purgecss end ignore */
 @tailwind utilities;
 
-.hero {
-  width: 100%;
-  color: #333;
+.logo {
+  top: 8px;
+  height: 5.5rem;
 }
 
-.title {
-  margin: 0;
-  width: 100%;
-  padding-top: 80px;
-  line-height: 1.15;
-  font-size: 48px;
+.stroked {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
 }
 
-.title,
-.description {
-  text-align: center;
+.filled {
+  fill: currentColor;
 }
