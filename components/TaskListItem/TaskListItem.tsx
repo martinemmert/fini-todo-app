@@ -56,7 +56,7 @@ const TaskListItem: TaskListItemComponent = ({ service, ...props }) => {
         />
       )}
       {state.matches("reading") && (
-        <OptionsList>
+        <OptionsList className="mt-2">
           <OptionsListButton iconName="trash" className="text-gray-400" onClick={() => send("delete")} />
         </OptionsList>
       )}

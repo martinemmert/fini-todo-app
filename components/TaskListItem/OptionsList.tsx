@@ -1,12 +1,14 @@
 import * as React from "react";
+import classnames from "classnames";
 
 type OptionsListComponent = React.FC<
   React.HTMLAttributes<HTMLUListElement> & { ref?: React.Ref<HTMLUListElement> }
 >;
 
-const OptionsList: OptionsListComponent = ({ children, ...props }) => {
+const OptionsList: OptionsListComponent = ({ children, className, ...props }) => {
+  const cn = classnames("flex flex-row items-center", className);
   return (
-    <ul className="flex flex-row items-center" {...props}>
+    <ul className={cn} {...props}>
       {children}
     </ul>
   );
