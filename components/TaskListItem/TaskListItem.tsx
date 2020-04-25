@@ -20,7 +20,9 @@ const TaskListItem: TaskListItemComponent = ({ service, ...props }) => {
   React.useEffect(() => {
     service.execute(state, {
       focusInput() {
-        inputRef.current && inputRef.current.focus();
+        requestAnimationFrame(() => {
+          inputRef.current && inputRef.current.focus();
+        });
       },
     });
   }, [state, inputRef]);
@@ -57,7 +59,11 @@ const TaskListItem: TaskListItemComponent = ({ service, ...props }) => {
       )}
       {state.matches("reading") && (
         <OptionsList className="mt-2">
-          <OptionsListButton iconName="trash" className="text-gray-400" onClick={() => send("delete")} />
+          <OptionsListButton
+            iconName="trash"
+            className="text-gray-400"
+            onClick={() => send("delete")}
+          />
         </OptionsList>
       )}
     </li>
