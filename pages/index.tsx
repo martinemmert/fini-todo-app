@@ -60,15 +60,17 @@ export default () => {
             </h2>
           </div>
         )}
-        <button className="flex items-center mt-6 text-gray-600 ml-14">
-          <TablerIcon iconName="circle-plus" className="w-6 h-6" />
-          <span
-            className="relative ml-2 font-sans leading-none uppercase text-small"
-            onClick={() => send("addNewTask")}
-          >
-            Add new task
-          </span>
-        </button>
+        {state.matches("idle") && (
+          <button className="flex items-center mt-6 text-gray-600 ml-14">
+            <TablerIcon iconName="circle-plus" className="w-6 h-6" />
+            <span
+              className="relative ml-2 font-sans leading-none uppercase text-small"
+              onClick={() => send("addNewTask")}
+            >
+              Add new task
+            </span>
+          </button>
+        )}
       </div>
     </main>
   );

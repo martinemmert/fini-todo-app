@@ -2,6 +2,7 @@ import { assign, Machine, spawn, send, Interpreter, EventObject } from "xstate";
 import { ITaskListItem, ITask } from "../@types";
 import TaskMachine from "./TaskMachine";
 import { v4 as uuid } from "uuid";
+import { raise } from "xstate/lib/actions";
 
 export type TasksMachineContext = {
   tasks: ITaskListItem[];
@@ -34,14 +35,14 @@ const TasksMachine = Machine<TasksMachineContext>({
         },
       },
     },
-    idle: {
-      entry: assign((context) => ({
-        ...context,
-        newTaskRef: null,
-      })),
-    },
+    idle: {},
     addingNewTask: {
-      on: { "": "idle" },
+      on: {
+        newTaskCommitted: {
+          target: "idle",
+          actions: assign(() => ({ newTaskRef: undefined })),
+        },
+      },
     },
   },
   on: {
@@ -50,6 +51,7 @@ const TasksMachine = Machine<TasksMachineContext>({
       actions: assign((_, event) => ({ tasks: event.tasks })),
     },
     addNewTask: {
+      target: "addingNewTask",
       actions: [
         assign((context) => {
           const newTask = { id: uuid(), title: "", completed: false };
@@ -78,6 +80,7 @@ const TasksMachine = Machine<TasksMachineContext>({
             }
           },
         }),
+        raise("newTaskCommitted"),
         "persist",
       ],
     },
