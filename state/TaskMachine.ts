@@ -31,7 +31,7 @@ const TaskMachine = Machine<TaskMachineContext>(
                 actions: [
                   assign((context) => ({
                     ...context,
-                    completed: false,
+                    completed: true,
                     completedOn: new Date().toISOString(),
                   })),
                   sendParent((context) => ({ type: "commitTask", task: context })),
