@@ -1,12 +1,18 @@
 {
   "name": "with-tailwindcss",
-  "version": "0.1.2",
+  "version": "0.0.0-development",
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martinemmert/fini-todo-app"
   },
   "dependencies": {
+    "@semantic-release/git": "^9.0.0",
     "@xstate/react": "^0.8.1",
     "classnames": "^2.2.6",
     "next": "^9.2.0",
@@ -20,7 +26,11 @@
     "@types/node": "^13.13.2",
     "@types/react": "^16.9.34",
     "postcss-preset-env": "^6.7.0",
+    "semantic-release": "^17.0.7",
     "tailwindcss": "^1.1.4",
     "typescript": "^3.8.3"
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }
