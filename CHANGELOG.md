@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/martinemmert/fini-todo-app/compare/v1.0.0...v1.1.0) (2020-04-26)
+
+
+### Features
+
+* handle focusout event on textinput ([24c151f](https://github.com/martinemmert/fini-todo-app/commit/24c151f483d680d8b72fb73b696f4ca2a5a3bc70))
+
 # 1.0.0 (2020-04-26)
 
 
