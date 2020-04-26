@@ -6,6 +6,8 @@ import Checkbox from "./Checkbox";
 import OptionsList from "./OptionsList";
 import OptionsListButton from "./OptionsListButton";
 import TextInput from "./TextInput";
+import useExecuteStateActions from "../../hooks/useServiceStateActions";
+import withAutoFocusEnabledAfterClick from "../../utils/focusAfterClick";
 
 type TaskListItemComponent = React.FC<
   React.HTMLAttributes<HTMLLIElement> & {
@@ -17,15 +19,11 @@ const TaskListItem: TaskListItemComponent = ({ service, ...props }) => {
   const [state, send] = useService(service);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  React.useEffect(() => {
-    service.execute(state, {
-      focusInput() {
-        requestAnimationFrame(() => {
-          inputRef.current && inputRef.current.focus();
-        });
-      },
-    });
-  }, [state, inputRef]);
+  useExecuteStateActions(service, state, {
+    focusInput: () => inputRef?.current.focus(),
+  });
+
+  const sendEdit = withAutoFocusEnabledAfterClick(() => send("edit"));
 
   return (
     <li
@@ -39,7 +37,7 @@ const TaskListItem: TaskListItemComponent = ({ service, ...props }) => {
       {state.matches("reading.pending") && (
         <p
           className="block px-4 py-2 w-full font-serif font-book text-base leading-normal border rounded border-transparent"
-          onClick={() => send("edit")}
+          onClick={sendEdit}
         >
           {state.context.title}
         </p>
