@@ -4,6 +4,8 @@ import TablerIcon from "../components/TablerIcon";
 import TaskList from "../components/TaskList";
 import TasksMachine from "../state/TasksMachine";
 import Navbar from "../components/Navbar";
+import withAutoFocusEnabledAfterClick from "../utils/focusAfterClick";
+import useExecuteStateActions from "../hooks/useServiceStateActions";
 
 export default () => {
   const [state, send, service] = useMachine(
@@ -34,11 +36,13 @@ export default () => {
     }
   }, []);
 
-  React.useEffect(() => {
-    service.execute(state);
-  }, [state]);
+  useExecuteStateActions(service, state);
 
   const { tasks } = state.context;
+
+  const handleOnClick = withAutoFocusEnabledAfterClick(() =>
+    send("addNewTask")
+  );
 
   return (
     <main>
@@ -65,7 +69,7 @@ export default () => {
             <TablerIcon iconName="circle-plus" className="w-6 h-6" />
             <span
               className="relative ml-2 font-sans leading-none uppercase text-small"
-              onClick={() => send("addNewTask")}
+              onClick={handleOnClick}
             >
               Add new task
             </span>
