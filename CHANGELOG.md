@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/martinemmert/fini-todo-app/compare/v1.1.0...v1.1.1) (2020-04-26)
+
+
+### Bug Fixes
+
+* add workaround to send commitTask before addNewTask event ([2b17fc7](https://github.com/martinemmert/fini-todo-app/commit/2b17fc7e385a35bd98f6728ca54919cc15b92889))
+
 # [1.1.0](https://github.com/martinemmert/fini-todo-app/compare/v1.0.0...v1.1.0) (2020-04-26)
 
 
