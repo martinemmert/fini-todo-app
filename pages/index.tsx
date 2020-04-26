@@ -40,8 +40,12 @@ export default () => {
 
   const { tasks } = state.context;
 
+  // note: 
+  // the set timeout makes sure that if a task is
+  // currently in edit mode, the commitTask event is handled
+  // before the addNewTask event. It works but feels somewhat dirty.
   const handleOnClick = withAutoFocusEnabledAfterClick(() =>
-    send("addNewTask")
+    setTimeout(() => send("addNewTask"), 0)
   );
 
   return (
