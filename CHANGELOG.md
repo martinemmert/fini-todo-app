@@ -1,0 +1,14 @@
+# 1.0.0 (2020-04-26)
+
+
+### Bug Fixes
+
+* add dely before focusing on the input field ([1ab7046](https://github.com/martinemmert/fini-todo-app/commit/1ab704663d8b2329e3c2a2472acbc757691a7e64))
+* implement mobile autofocus issue workaround ([27493f5](https://github.com/martinemmert/fini-todo-app/commit/27493f55dd2e118703bd0ceac07af765e57ef604))
+* set completed to true then toggle is send on pending state ([df31708](https://github.com/martinemmert/fini-todo-app/commit/df3170805027824457edd1a66670c8660dcf7e3e))
+
+
+### Features
+
+* hide add new task button during task creation ([7fe1912](https://github.com/martinemmert/fini-todo-app/commit/7fe1912d75e30ae0c65e68042841ea769579ac19))
+* migrate app from svelte-todo-app and port to react ([95119b5](https://github.com/martinemmert/fini-todo-app/commit/95119b5bed3909fa488b4b4309fcc7aa737aa616))
