@@ -15,15 +15,49 @@ type TaskListItemComponent = React.FC<
   }
 >;
 
+const useCallbackRef = function <T>(
+  ...deps
+): [React.MutableRefObject<T>, T, (node: T) => void] {
+  const [node, setNode] = React.useState<T>(null);
+  const ref = React.useRef<T>(node);
+  const callback = React.useCallback((node) => {
+    setNode(node);
+    ref.current = node;
+  }, deps);
+  return [ref, node, callback];
+};
+
 const TaskListItem: TaskListItemComponent = ({ service, ...props }) => {
   const [state, send] = useService(service);
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const [inputRef, inputNode, inputRefCallback] = useCallbackRef<
+    HTMLInputElement
+  >(state);
 
   useExecuteStateActions(service, state, {
-    focusInput: () => inputRef?.current.focus(),
+    focusInput: () => {
+      inputRef.current?.focus();
+    },
   });
 
   const sendEdit = withAutoFocusEnabledAfterClick(() => send("edit"));
+
+  React.useEffect(() => {
+    const mouseDownHandler = () => {
+      inputRef.current?.removeEventListener("focusout", handleFocusOut);
+    };
+
+    const handleFocusOut = () => {
+      send("cancel")
+    };
+    
+    inputRef.current?.addEventListener("focusout", handleFocusOut);
+    document.addEventListener("mousedown", mouseDownHandler);
+
+    return () => {
+      document.removeEventListener("mousedown", mouseDownHandler);
+      inputRef.current?.removeEventListener("focusout", handleFocusOut);
+    };
+  }, [inputNode]);
 
   return (
     <li
@@ -49,7 +83,7 @@ const TaskListItem: TaskListItemComponent = ({ service, ...props }) => {
       )}
       {state.matches("editing") && (
         <TextInput
-          innerRef={inputRef}
+          innerRef={inputRefCallback}
           value={state.context.title}
           onCommit={(_, value) => send("commit", { title: value })}
           onCancel={() => send("cancel")}
