@@ -1,12 +1,10 @@
-name: Semantic Release
+name: CI
 
-on:
-  push:
-    branches:
-      - master
+on: push
+
 jobs:
   release:
-    name: Release
+    name: Test & Release
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
@@ -16,9 +14,22 @@ jobs:
         with:
           node-version: "12.x"
       - run: npm install -g yarn
+      - name: Cache Node.js modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.yarn
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+      - name: Config Yarn Cache Directory
+        run: yarn config set cache-folder ~/.yarn
       - name: Install dependencies
-        run: yarn
+        run: yarn --frozen-lockfile
+      - name: Test
+        run: yarn test --ci
       - name: Release
+        if: ${{ github.event_name == 'pull' && github.ref == 'refs/heads/master' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn semantic-release
