@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components / TaskListItem Completed 1`] = `
+<li
+  className="flex flex-row items-start mt-4 md:mt-2 first:mt-0"
+>
+  <svg
+    className="flex-none w-8 h-8 mt-2 mr-2 cursor-pointer focus:outline-none"
+    onClick={[Function]}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      className="text-gray-200 stroked filled"
+      height={16}
+      rx={3}
+      width={16}
+      x={4}
+      y={4}
+    />
+    <path
+      className="text-gray-600 stroked"
+      d="M9 12l2 2l4 -4"
+    />
+  </svg>
+  <p
+    className="block w-full px-4 py-2 font-serif text-base leading-normal text-gray-500 line-through border border-transparent rounded cursor-default font-book"
+  >
+    Some completed Task
+  </p>
+  <ul
+    className="flex flex-row items-center mt-2"
+  >
+    <li
+      className="block ml-2 text-gray-400"
+      onClick={[Function]}
+    >
+      <svg
+        className="w-8 h-8"
+      >
+        <use
+          xlinkHref="/assets/tabler-sprite.svg#tabler-trash"
+        />
+      </svg>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`Storyshots Components / TaskListItem Editing 1`] = `
+<li
+  className="flex flex-row items-start mt-4 md:mt-2 first:mt-0"
+>
+  <svg
+    className="flex-none w-8 h-8 mt-2 mr-2 cursor-pointer focus:outline-none"
+    onClick={[Function]}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      className="text-gray-400 stroked"
+      height={16}
+      rx={3}
+      width={16}
+      x={4}
+      y={4}
+    />
+  </svg>
+  <div
+    className="flex w-full"
+  >
+    <input
+      className="block px-4 py-2 w-full font-serif font-book text-base leading-normal border rounded focus:outline-none appearance-none text-gray-800 cursor-text bg-gray-100 border-gray-400"
+      defaultValue="Some pending Task"
+      onInput={[Function]}
+      onKeyDown={[Function]}
+      type="text"
+    />
+    <ul
+      className="flex flex-row items-center"
+    >
+      <li
+        className="block ml-2 text-teal-500"
+        onClick={[Function]}
+      >
+        <svg
+          className="w-8 h-8"
+        >
+          <use
+            xlinkHref="/assets/tabler-sprite.svg#tabler-circle-check"
+          />
+        </svg>
+      </li>
+      <li
+        className="block ml-2 text-gray-500"
+        onClick={[Function]}
+      >
+        <svg
+          className="w-8 h-8"
+        >
+          <use
+            xlinkHref="/assets/tabler-sprite.svg#tabler-circle-x"
+          />
+        </svg>
+      </li>
+    </ul>
+  </div>
+</li>
+`;
+
+exports[`Storyshots Components / TaskListItem Pending 1`] = `
+<li
+  className="flex flex-row items-start mt-4 md:mt-2 first:mt-0"
+>
+  <svg
+    className="flex-none w-8 h-8 mt-2 mr-2 cursor-pointer focus:outline-none"
+    onClick={[Function]}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      className="text-gray-400 stroked"
+      height={16}
+      rx={3}
+      width={16}
+      x={4}
+      y={4}
+    />
+  </svg>
+  <p
+    className="block w-full px-4 py-2 font-serif text-base leading-normal border border-transparent rounded font-book"
+    onClick={[Function]}
+  >
+    Some pending Task
+  </p>
+  <ul
+    className="flex flex-row items-center mt-2"
+  >
+    <li
+      className="block ml-2 text-gray-400"
+      onClick={[Function]}
+    >
+      <svg
+        className="w-8 h-8"
+      >
+        <use
+          xlinkHref="/assets/tabler-sprite.svg#tabler-trash"
+        />
+      </svg>
+    </li>
+  </ul>
+</li>
+`;
