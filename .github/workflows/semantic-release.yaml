@@ -16,8 +16,20 @@ jobs:
         with:
           node-version: "12.x"
       - run: npm install -g yarn
+      - name: Cache Node.js modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.yarn
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+      - name: Config Yarn Cache Directory
+        run: yarn config set cache-folder ~/.yarn
       - name: Install dependencies
-        run: yarn
+        run: yarn --frozen-lockfile
+      - name: Test
+        run: yarn test --ci
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
