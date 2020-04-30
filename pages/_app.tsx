@@ -1,3 +1,4 @@
+import * as React from "react";
 import '../styles/index.css'
 
 function MyApp({ Component, pageProps }) {

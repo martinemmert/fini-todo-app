@@ -11,7 +11,7 @@ import withAutoFocusEnabledAfterClick from "../../utils/focusAfterClick";
 
 type TaskListItemComponent = React.FC<
   React.HTMLAttributes<HTMLLIElement> & {
-    service?: Interpreter<TaskMachineContext>;
+    service: Interpreter<TaskMachineContext>;
   }
 >;
 
@@ -61,7 +61,7 @@ const TaskListItem: TaskListItemComponent = ({ service, ...props }) => {
 
   return (
     <li
-      className="mt-4 md:mt-2 first:mt-0 flex flex-row items-start"
+      className="flex flex-row items-start mt-4 md:mt-2 first:mt-0"
       {...props}
     >
       <Checkbox
@@ -70,14 +70,14 @@ const TaskListItem: TaskListItemComponent = ({ service, ...props }) => {
       />
       {state.matches("reading.pending") && (
         <p
-          className="block px-4 py-2 w-full font-serif font-book text-base leading-normal border rounded border-transparent"
+          className="block w-full px-4 py-2 font-serif text-base leading-normal border border-transparent rounded font-book"
           onClick={sendEdit}
         >
           {state.context.title}
         </p>
       )}
       {state.matches("reading.completed") && (
-        <p className="block px-4 py-2 w-full font-serif font-book text-base leading-normal border rounded border-transparent text-gray-500 cursor-default line-through">
+        <p className="block w-full px-4 py-2 font-serif text-base leading-normal text-gray-500 line-through border border-transparent rounded cursor-default font-book">
           {state.context.title}
         </p>
       )}
