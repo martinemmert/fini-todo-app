@@ -1,12 +1,10 @@
 name: Semantic Release
 
-on:
-  push:
-    branches:
-      - master
+on: [push, pull_request]
+
 jobs:
   release:
-    name: Release
+    name: Test & Release
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
@@ -31,6 +29,7 @@ jobs:
       - name: Test
         run: yarn test --ci
       - name: Release
+        if: ${{ github.event_name == 'pull' && github.ref == 'refs/heads/master' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn semantic-release
