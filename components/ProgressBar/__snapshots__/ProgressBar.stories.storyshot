@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components ProgressBar 1`] = `
+<div
+  className="w-full h-1 overflow-hidden bg-gray-200 rounded-full"
+>
+  <div
+    className="w-full h-full transition-transform duration-150 ease-out origin-left transform scale-x-0 bg-teal-400"
+    style={
+      Object {
+        "transform": "scaleX(0.35)",
+      }
+    }
+  />
+</div>
+`;

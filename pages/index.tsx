@@ -6,6 +6,7 @@ import TasksMachine from "../state/TasksMachine";
 import Navbar from "../components/Navbar";
 import withAutoFocusEnabledAfterClick from "../utils/focusAfterClick";
 import useExecuteStateActions from "../hooks/useServiceStateActions";
+import TaskListProgress from "../components/TaskListProgress";
 
 export default () => {
   const [state, send, service] = useMachine(
@@ -40,7 +41,7 @@ export default () => {
 
   const { tasks } = state.context;
 
-  // note: 
+  // note:
   // the set timeout makes sure that if a task is
   // currently in edit mode, the commitTask event is handled
   // before the addNewTask event. It works but feels somewhat dirty.
@@ -52,9 +53,14 @@ export default () => {
     <main>
       <Navbar />
       <div className="max-w-3xl px-8 mx-auto mt-6 md:my-12">
-        <h1 className="mb-6 font-serif text-lg font-semibold leading-none text-gray-800 ml-14 md:text-2xl md:mb-14">
+        <h1 className="font-serif text-lg font-semibold leading-none text-gray-800 md:text-2xl">
           Inbox
         </h1>
+        <TaskListProgress
+          completedTasks={tasks.filter((task) => task.completed).length}
+          totalTasks={tasks.length}
+          className="mt-4 mb-8"
+        />
         {tasks.length > 0 && <TaskList tasks={tasks} />}
         {tasks.length === 0 && (
           <div className="flex flex-col items-center">
