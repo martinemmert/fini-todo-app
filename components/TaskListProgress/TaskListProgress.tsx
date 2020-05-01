@@ -12,7 +12,7 @@ const TaskListProgress: TaskListProgressComponent = ({
   ...props
 }) => {
   const pendingTasks = totalTasks - completedTasks;
-  const progress = completedTasks / totalTasks;
+  const progress = totalTasks === 0 ? 0 : completedTasks / totalTasks;
   
   const pendingLabel =
     pendingTasks == 1 ? `, 1 remaining task.` : `, ${pendingTasks} remaining tasks.`;
