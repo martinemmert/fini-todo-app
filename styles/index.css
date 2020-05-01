@@ -6,6 +6,10 @@
 
 html { font-size: 12px; }
 
+.font-sans {
+  font-variant-numeric: lining-nums;
+}
+
 /* purgecss end ignore */
 @tailwind utilities;
 
