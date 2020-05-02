@@ -1,3 +1,17 @@
+# [1.2.0](https://github.com/martinemmert/fini-todo-app/compare/v1.1.1...v1.2.0) (2020-05-02)
+
+
+### Bug Fixes
+
+* **components:** use 0 progress if totalTasks is 0 and fix NaN issue ([0d939eb](https://github.com/martinemmert/fini-todo-app/commit/0d939eb0f4c5604891f3ba720cea86789bbc1640))
+
+
+### Features
+
+* add TaskListProgress to main application ([6fe49bb](https://github.com/martinemmert/fini-todo-app/commit/6fe49bb4ad5dd8625d1e19eb35fa38b896ed17b3))
+* **components:** add ProgressBar component ([837a0bd](https://github.com/martinemmert/fini-todo-app/commit/837a0bd788a7da5259b55ee2005eb66af0af486f))
+* **components:** add TaskListProgress component ([4e5bd33](https://github.com/martinemmert/fini-todo-app/commit/4e5bd334a3be29d8fd412ef7d803d50d22e25c6c))
+
 ## [1.1.1](https://github.com/martinemmert/fini-todo-app/compare/v1.1.0...v1.1.1) (2020-04-26)
 
 
