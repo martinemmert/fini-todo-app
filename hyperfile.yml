@@ -1,0 +1,5 @@
+components:
+  db:
+    driver: pg
+  web:
+    port: 8080
